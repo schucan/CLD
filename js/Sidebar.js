@@ -175,7 +175,8 @@ function Sidebar(loopy){
 			"and adapted by Luzi of the <a target='_blank' href='https://ost.ch/ims'>"+
 			"Institute for Modeling and Simulation</a> at the "+
 			"<a target='_blank' href='https://ost.ch/'>University of applied Sciences</a> "+
-			"in St. Gallen,&nbsp;Switzerland."
+			"in St. Gallen,&nbsp;Switzerland. "+
+			"Adapt and improve on <a target='_blank' href='https://github.com/schucan/CLD'>GitHub</a>."
 
 		}));
 		self.addPage("Edit", page);
