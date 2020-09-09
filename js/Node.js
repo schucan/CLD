@@ -16,7 +16,7 @@ Node.COLORS = {
 Node.defaultValue = 0.5;
 Node.defaultHue = 0;
 
-Node.DEFAULT_RADIUS = 60;
+Node.DEFAULT_RADIUS = Math.round(Loopy.FONTSIZE / 2 *3);
 
 // from https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
@@ -43,9 +43,9 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
 			context.fillText(lines[i], x, y);
 			y += lineHeight;
 		}
-		
+
       }
-      
+
 
 function Node(model, config){
 
@@ -82,7 +82,7 @@ function Node(model, config){
 	var _controlsAlpha = 0;
 	var _controlsDirection = 0;
 	var _controlsSelected = false;
-	var _controlsPressed = false;	
+	var _controlsPressed = false;
 	var _listenerMouseMove = subscribe("mousemove", function(){
 
 		return;
@@ -180,7 +180,7 @@ function Node(model, config){
 		// Translate!
 		ctx.save();
 		ctx.translate(x,y+_offset);
-		
+
 		// DRAW HIGHLIGHT???
 		if(self.loopy.sidebar.currentPage.target == self){
 			ctx.beginPath();
@@ -188,7 +188,7 @@ function Node(model, config){
 			ctx.fillStyle = HIGHLIGHT_COLOR;
 			ctx.fill();
 		}
-		
+
 		// White-gray bubble with colored border
 		ctx.beginPath();
 		ctx.arc(0, 0, r-2, 0, Math.TAU, false);
@@ -197,7 +197,7 @@ function Node(model, config){
 		ctx.lineWidth = 6;
 		ctx.strokeStyle = color;
 		ctx.stroke();
-		
+
 		// Circle radius
 		// var _circleRadiusGoto = r*(self.value+1);
 		// _circleRadius = _circleRadius*0.75 + _circleRadiusGoto*0.25;
@@ -233,7 +233,7 @@ function Node(model, config){
 		ctx.fill();*/
 
 		// Text!
-		var fontsize = 40;
+		var fontsize = Loopy.FONTSIZE;
 		ctx.font = "normal "+fontsize+"px sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";

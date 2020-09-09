@@ -11,6 +11,7 @@ Loopy.TOOL_INK = 0;
 Loopy.TOOL_DRAG = 1;
 Loopy.TOOL_ERASE = 2;
 Loopy.TOOL_LABEL = 3;
+Loopy.FONTSIZE = 40;
 
 function Loopy(config){
 
@@ -28,7 +29,7 @@ function Loopy(config){
 
 	// Mouse
 	Mouse.init(document.getElementById("canvasses")); // TODO: ugly fix, ew
-	
+
 	// Model
 	self.model = new Model(self);
 
@@ -103,7 +104,7 @@ function Loopy(config){
 
 		// Play mode!
 		publish("model/reset");
-		
+
 		// Edit mode!
 		if(mode==Loopy.MODE_EDIT){
 			self.showPlayTutorial = false; // donezo
@@ -178,7 +179,7 @@ function Loopy(config){
 
 		return link;
 	};
-	
+
 	// "BLANK START" DATA:
 	var _blankData = "[[[3,271,409,0.5,%22ships%22,0],[4,496,414,0.5,%22catch%22,0],[5,775,413,0.5,%22fish%22,0],[6,1015,417,0.5,%22new%2520fish%22,0]],[[3,4,113,1,0],[4,3,122,1,0],[5,6,96,1,0],[6,5,116,1,0],[4,5,103,-1,0],[5,4,132,1,0]],[[375,437,%22%252B%22],[894,428,%22%252B%22],[635,449,%22-%250ALimit%2520to%2520%250AGrowth%22]],6%5D";
 
@@ -186,7 +187,7 @@ function Loopy(config){
 		var data = _getParameterByName("data");
 		if(!data) data=decodeURIComponent(_blankData);
 		self.model.deserialize(data);
-	}; 
+	};
 
 
 	///////////////////////////
@@ -219,7 +220,7 @@ function Loopy(config){
 			self.model.center(true);
 		});
 
-		
+
 		// Also, HACK: auto signal
 		var signal = _getParameterByName("signal");
 		if(signal){

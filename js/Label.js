@@ -4,8 +4,6 @@ LABEL!
 
 **********************************/
 
-Label.FONTSIZE = 40;
-
 function Label(model, config){
 
 	var self = this;
@@ -48,22 +46,22 @@ function Label(model, config){
 		ctx.translate(x,y);
 
 		// Text!
-		ctx.font = "100 "+Label.FONTSIZE+"px sans-serif";
+		ctx.font = "100 "+Loopy.FONTSIZE+"px sans-serif";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
 		ctx.fillStyle = "#000";
 
 		// ugh new lines are a PAIN.
 		var lines = self.breakText();
-		ctx.translate(0, -(Label.FONTSIZE*lines.length)/2);
+		ctx.translate(0, -(Loopy.FONTSIZE*lines.length)/2);
 		for(var i=0; i<lines.length; i++){
 			var line = lines[i];
-			if ((i== 0) && 
+			if ((i== 0) &&
 					((line == '+') || (line == '-') || (line.toLowerCase() == 'r') || (line.toLowerCase() == 'b'))) {
-				ctx.font = "900 "+(Label.FONTSIZE * 2)+"px sans-serif";
-				
+				ctx.font = "900 "+(Loopy.FONTSIZE * 2)+"px sans-serif";
+
 				ctx.fillStyle = "#44f";
-				var radgrad = ctx.createRadialGradient(0,0,0,0,0,Label.FONTSIZE * 2);
+				var radgrad = ctx.createRadialGradient(0,0,0,0,0,Loopy.FONTSIZE * 2);
 				radgrad.addColorStop(0, '#e0e0ff');
 				radgrad.addColorStop(0.3, '#e0e0ff');
 				radgrad.addColorStop(1, 'rgba(224, 224, 255,0)');
@@ -76,12 +74,12 @@ function Label(model, config){
 					line = '–'; // <- this is endash; emdash would be this: '—'
 				}
 				ctx.fillText(line.toUpperCase(), 0, 0);
-				ctx.translate(0, Label.FONTSIZE);
-				ctx.font = "100 "+Label.FONTSIZE+"px sans-serif";
+				ctx.translate(0, Loopy.FONTSIZE);
+				ctx.font = "100 "+Loopy.FONTSIZE+"px sans-serif";
 				//ctx.fillStyle = "#000";
 			} else {
 				ctx.fillText(line, 0, 0);
-				ctx.translate(0, Label.FONTSIZE);
+				ctx.translate(0, Loopy.FONTSIZE);
 			}
 		}
 
@@ -127,14 +125,14 @@ function Label(model, config){
 
 		// Dimensions, then:
 		var w = maxWidth;
-		var h = (Label.FONTSIZE*lines.length)/2;
+		var h = (Loopy.FONTSIZE*lines.length)/2;
 
 		// Bounds, then:
 		return {
 			x: self.x-w/2,
-			y: self.y-h/2-Label.FONTSIZE/2,
+			y: self.y-h/2-Loopy.FONTSIZE/2,
 			width: w,
-			height: h+Label.FONTSIZE/2
+			height: h+Loopy.FONTSIZE/2
 		};
 
 	};
