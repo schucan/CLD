@@ -162,8 +162,8 @@ function Sidebar(loopy){
 
 			"<hr/><br>"+
 
-			"<span class='mini_button' onclick='createPNG()'>copy to clipboard</span> <br><br>"+
-			"<span class='mini_button' onclick='publish(\"modal\",[\"save_link\"])'>save as link</span> <br><br>"+
+			"<span class='mini_button' onclick='createPNG()'>copy image to clipboard</span> <br><br>"+
+			"<span class='mini_button' onclick='publish(\"modal\",[\"save_link\"])'>copy CLD as link</span> <br><br>"+
 			"<span class='mini_button' onclick='publish(\"export/file\")'>save as file</span> <br><br>"+
 			"<span class='mini_button' onclick='publish(\"import/file\")'>load from file</span> <br><br>"+
 			

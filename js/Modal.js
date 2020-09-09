@@ -115,7 +115,7 @@ function Modal(loopy){
 		label.style.fontSize = "15px";
 		label.style.marginTop = "6px";
 		label.style.color = "#888";
-		label.innerHTML = "(this is a long URL, so you may want to use a link-shortener like <a target='_blank' href='https://bitly.com/'>bit.ly</a>)";
+		label.innerHTML = "(this is a long URL, so you may want to use a link-shortener)";
 		page.dom.appendChild(label);
 
 		// chars left...
@@ -133,6 +133,20 @@ function Modal(loopy){
 			var link = loopy.saveToURL();
 			output.output(link);
 			output.dom.select();
+			try {
+				var successful = document.execCommand('copy');
+				var msg = successful ? 'successful' : 'unsuccessful';
+				if (successful) {
+					if(link.length<2048){
+						self.hide();
+					}
+					alert('CLD address copied to clipboard.');
+				} else {
+					console.log('Copying text command was ' + msg);
+				}
+			} catch (err) {
+				console.log('Oops, unable to copy');
+			}
 
 			// Chars left
 			var html = link.length+" / 2048 characters";
