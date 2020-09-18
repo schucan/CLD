@@ -160,7 +160,7 @@ function Loopy(config){
 	self.saveToURL = function(embed){
 
 		// Create link
-		var dataString = self.model.serialize();
+		var dataString = LZString.compressToEncodedURIComponent(self.model.serialize());
 		var uri = dataString; // encodeURIComponent(dataString);
 		var base = window.location.origin + window.location.pathname;
 		var historyLink = base+"?data="+uri;
@@ -181,11 +181,17 @@ function Loopy(config){
 	};
 
 	// "BLANK START" DATA:
-	var _blankData = "[[[3,271,409,0.5,%22ships%22,0],[4,496,414,0.5,%22catch%22,0],[5,775,413,0.5,%22fish%22,0],[6,1015,417,0.5,%22new%2520fish%22,0]],[[3,4,113,1,0],[4,3,122,1,0],[5,6,96,1,0],[6,5,116,1,0],[4,5,103,-1,0],[5,4,132,1,0]],[[375,437,%22%252B%22],[894,428,%22%252B%22],[635,449,%22-%250ALimit%2520to%2520%250AGrowth%22]],6%5D";
-
+	var _blankData = "NoiMAYBoBYA4HZIGZoCZLgHQFZIFJVUAVASwHMBTAJwGcD1wBdSYUUSeATkRWgx3yEAggDsALiQA2AewAOFOoQyNmYKG0ihonSAFp2TFhoiaAbLgMqWwU0ljJT7eroLZwQgMLSAtrMkUxCld3AAkAQypvaREAT3pVTiQLeFNBYgALEkVsVHAs11ywkQLwCgAPMN9-EuChACMwySKAYxIRMhKZOUxa2oBVGiDUHPAxdKGRgAoAUQBKKjDBqhKxaRrh92b-IpXxkppxgJKigBNamjEIsRKok4pJNrIewis2PGwAESA";
 	self.loadFromURL = function(){
-		var data = _getParameterByName("data");
-		if(!data) data=decodeURIComponent(_blankData);
+		// for backwards compatibility with Loopy!
+		var encodedData = LZString.decompressFromEncodedURIComponent(_getParameterByName("data"));
+		var data = false;
+		if (!encodedData) {
+			data = _getParameterByName("data")
+		} else {
+			data = decodeURIComponent(encodedData);
+		}
+		if(!data) data=decodeURIComponent(LZString.decompressFromEncodedURIComponent(_blankData));
 		self.model.deserialize(data);
 	};
 

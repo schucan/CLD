@@ -53,7 +53,7 @@ function Sidebar(loopy){
 			// Set color of Slider
 			var node = page.target;
 			var color = Node.COLORS[node.hue];
-			
+
 			// Focus on the name field IF IT'S "" or "?"
 			var name = node.label;
 			if(name=="" || name=="?") page.getComponent("label").select();
@@ -125,7 +125,7 @@ function Sidebar(loopy){
 			page.getComponent("text").select();
 		};
 		page.onhide = function(){
-			
+
 			// If you'd just edited it...
 			var label = page.target;
 			if(!page.target) return;
@@ -154,7 +154,7 @@ function Sidebar(loopy){
 		var page = new SidebarPage();
 		page.addComponent(new ComponentHTML({
 			html: ""+
-			
+
 			"<b style='font-size:1.4em'>CLD Tool</b><br>a tool for thinking in systems<br><br>"+
 
 			"<span class='mini_button' onclick='publish(\"modal\",[\"examples\"])'>see examples</span> "+
@@ -166,9 +166,10 @@ function Sidebar(loopy){
 			"<span class='mini_button' onclick='publish(\"modal\",[\"save_link\"])'>copy CLD as link</span> <br><br>"+
 			"<span class='mini_button' onclick='publish(\"export/file\")'>save as file</span> <br><br>"+
 			"<span class='mini_button' onclick='publish(\"import/file\")'>load from file</span> <br><br>"+
-			
+			"<span class='mini_button' onclick='document.location.href=\"?data=NrC6Bo0iEYCYCkBWAIkA\"'>clear canvas</span> <br><br>"+
+
 			"<hr/><br>"+
-				
+
 			"<a target='_blank' href='../'>CLD Tool</a> is "+
 			"based on <a target='_blank' href='https://ncase.me/loopy/'>Loopy</a> "+
 			"by <a target='_blank' href='https://ncase.me'>Nicky Case</a> "+
@@ -274,14 +275,14 @@ function Component(){
 		return self.page.target[self.propName];
 	};
 	self.setValue = function(value){
-		
+
 		// Model's been changed!
 		publish("model/changed");
 
 		// Edit the value!
 		self.page.target[self.propName] = value;
 		self.page.onedit(); // callback!
-		
+
 	};
 }
 
