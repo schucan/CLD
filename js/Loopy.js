@@ -163,7 +163,7 @@ function Loopy(config){
 		var dataString = LZString.compressToEncodedURIComponent(self.model.serialize());
 		var uri = dataString; // encodeURIComponent(dataString);
 		var base = window.location.origin + window.location.pathname;
-		var historyLink = base+"?data="+uri;
+		var historyLink = base+"?"+uri;
 		var link;
 		if(embed){
 			link = base+"?embed=1&data="+uri;
@@ -183,10 +183,15 @@ function Loopy(config){
 	// "BLANK START" DATA:
 	var _blankData = "NoiMAYBoBYA4HZIGZoCZLgHQFZIFJVUAVASwHMBTAJwGcD1wBdSYUUSeATkRWgx3yEAggDsALiQA2AewAOFOoQyNmYKG0ihonSAFp2TFhoiaAbLgMqWwU0ljJT7eroLZwQgMLSAtrMkUxCld3AAkAQypvaREAT3pVTiQLeFNBYgALEkVsVHAs11ywkQLwCgAPMN9-EuChACMwySKAYxIRMhKZOUxa2oBVGiDUHPAxdKGRgAoAUQBKKjDBqhKxaRrh92b-IpXxkppxgJKigBNamjEIsRKok4pJNrIewis2PGwAESA";
 	self.loadFromURL = function(){
-		// for backwards compatibility with Loopy!
-		var encodedData = LZString.decompressFromEncodedURIComponent(_getParameterByName("data"));
+		var encodedData = '';
+		if (window.location.search.substr(0,6) == '?data=') {
+			encodedData = LZString.decompressFromEncodedURIComponent(window.location.search.substr(6));
+		} else {
+			encodedData = LZString.decompressFromEncodedURIComponent(_getParameterByName("data"));
+		}
 		var data = false;
 		if (!encodedData) {
+			// for backwards compatibility with Loopy!
 			data = _getParameterByName("data")
 		} else {
 			data = decodeURIComponent(encodedData);
