@@ -185,9 +185,9 @@ function Loopy(config){
 	self.loadFromURL = function(){
 		var encodedData = '';
 		if (window.location.search.substr(0,6) == '?data=') {
-			encodedData = LZString.decompressFromEncodedURIComponent(window.location.search.substr(6));
-		} else {
 			encodedData = LZString.decompressFromEncodedURIComponent(_getParameterByName("data"));
+		} else {
+			encodedData = LZString.decompressFromEncodedURIComponent(window.location.search.substr(1));
 		}
 		var data = false;
 		if (!encodedData) {
