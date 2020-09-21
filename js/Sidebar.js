@@ -166,7 +166,7 @@ function Sidebar(loopy){
 			"<span class='mini_button' onclick='publish(\"modal\",[\"save_link\"])'>copy CLD as link</span> <br><br>"+
 			"<span class='mini_button' onclick='publish(\"export/file\")'>save as file</span> <br><br>"+
 			"<span class='mini_button' onclick='publish(\"import/file\")'>load from file</span> <br><br>"+
-			"<span class='mini_button' onclick='document.location.href=\"?data=NrC6Bo0iEYCYCkBWAIkA\"'>clear canvas</span> <br><br>"+
+			"<span class='mini_button' onclick='document.location.href=\"?NrC6Bo0iEYCYCkBWAIkA\"'>clear canvas</span> <br><br>"+
 
 			"<hr/><br>"+
 

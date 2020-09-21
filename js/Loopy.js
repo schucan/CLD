@@ -122,12 +122,25 @@ function Loopy(config){
 	// SAVE & LOAD //
 	/////////////////
 
-	self.dirty = false;
+
+
 
 	// YOU'RE A DIRTY BOY
 	subscribe("model/changed", function(){
 		if(!self.embedded) self.dirty = true;
+		if (document.title.substring(0,2) != '• ') {
+			document.title = '• ' + document.title;
+		}
 	});
+	// No you're not
+	subscribe("model/safe", function(){
+		self.dirty = false;
+		if (document.title.substring(0,2) == '• ') {
+			document.title = document.title.substring(2);
+		}
+	});
+
+	publish("model/safe");
 
 	subscribe("export/file", function(){
 		var element = document.createElement('a');
@@ -140,6 +153,7 @@ function Loopy(config){
 		element.click();
 
 		document.body.removeChild(element);
+		publish("model/safe");
 	});
 
 	subscribe("import/file", function(){
@@ -172,7 +186,7 @@ function Loopy(config){
 		}
 
 		// NO LONGER DIRTY!
-		self.dirty = false;
+		publish("model/safe");
 
 		// PUSH TO HISTORY
 		window.history.replaceState(null, null, historyLink);
@@ -282,7 +296,7 @@ function Loopy(config){
 	}
 
 	// NOT DIRTY, THANKS
-	self.dirty = false;
+	publish("model/safe");
 
 	// SHOW ME, THANKS
 	document.body.style.opacity = "";
