@@ -180,7 +180,7 @@ function Loopy(config){
 		var historyLink = base+"?"+uri;
 		var link;
 		if(embed){
-			link = base+"?embed=1&data="+uri;
+			link = base+"?data="+uri+"&embed=1";
 		}else{
 			link = historyLink;
 		}
