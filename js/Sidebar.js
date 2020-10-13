@@ -167,7 +167,7 @@ function Sidebar(loopy){
 			"<span class='mini_button' onclick='publish(\"export/file\")'>save as file</span> <br><br>"+
 			"<span class='mini_button' onclick='publish(\"import/file\")'>load from file</span> <br><br>"+
 			"<span class='mini_button' onclick='document.location.href=\"?NrC6Bo0iEYCYCkBWAIkA\"'>clear canvas</span> <br><br>"+
-			"<span class='mini_button' onclick='document.location.href=loopy.saveToURL(1)'>Display Only</span> <br><br>"+
+			"<span class='mini_button' onclick='document.location.href=loopy.saveToURL(1)'>display only</span> <br><br>"+
 
 			"<hr/><br>"+
 

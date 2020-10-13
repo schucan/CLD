@@ -228,11 +228,12 @@ function Loopy(config){
 		self.sidebar.dom.style.display = "none";
 
 		// If *NO UI AT ALL*
-		var noUI = !!parseInt(_getParameterByName("no_ui")); // force to Boolean
+		var noUI = true; //!!parseInt(_getParameterByName("no_ui")); // force to Boolean
 		if(noUI){
 			_PADDING_BOTTOM = _PADDING;
 			//self.playbar.dom.style.display = "none";
 		}
+		self.mode = 1; // not MODE_EDIT!
 
 		// Fullscreen canvas
 		document.getElementById("canvasses").setAttribute("fullscreen","yes");

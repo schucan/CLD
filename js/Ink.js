@@ -37,7 +37,10 @@ function Ink(loopy){
 		ctx.strokeStyle = "#ccc";
 		ctx.lineWidth = 5;
 		ctx.lineCap = "round";
-
+		if (loopy.embedded) {
+			embedScale = loopy.offsetScale;
+			ctx.strokeStyle = "#f00";
+		}
 		// Draw line from last to current
 		ctx.beginPath();
 		ctx.moveTo(lastPoint[0]*2, lastPoint[1]*2);
@@ -79,14 +82,17 @@ function Ink(loopy){
 	subscribe("mouseup",function(){
 
 		// ONLY WHEN EDITING w INK
-		if(self.loopy.mode!=Loopy.MODE_EDIT) return;
+		if(self.loopy.mode!=Loopy.MODE_EDIT) {
+			self.reset();
+			return;
+		}
 		if(self.loopy.tool!=Loopy.TOOL_INK) return;
 
 		if(self.strokeData.length<2) return;
 		if(!Mouse.moved) return;
 
 		/*************************
-		
+
 		Detect what you drew!
 		1. Started in a node?
 		1a. If ended near/in a node, it's an EDGE.
@@ -155,7 +161,7 @@ function Ink(loopy){
 				var translated = _translatePoints(self.strokeData, -startNode.x, -startNode.y);
 				var rotated = _rotatePoints(translated, -angle);
 				var bounds = _getBounds(rotated);
-				
+
 				// Arc!
 				if(Math.abs(bounds.top)>Math.abs(bounds.bottom)) edgeConfig.arc = -bounds.top;
 				else edgeConfig.arc = -bounds.bottom;
