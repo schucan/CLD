@@ -140,7 +140,7 @@ function Modal(loopy){
 					if(link.length<2048){
 						self.hide();
 					}
-					alert('CLD address copied to clipboard.');
+					throwToast('CLD address copied to clipboard.');
 				} else {
 					console.log('Copying text command was ' + msg);
 				}

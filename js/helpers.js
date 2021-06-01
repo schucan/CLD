@@ -40,6 +40,21 @@ function getCanvasImage(_ctx, _bgColor){
 	return tmpCtx.canvas;
 }
 
+function throwToast(text, time) { //time in seconds
+	if (!text) return;
+	if (!time) {
+		time = 5;
+	}
+	var toaster = document.getElementById("toaster");
+	if (toaster) {
+		toaster.innerHTML = '<p>' + text + '</p>';
+		toaster.style.display = "block";
+		setTimeout(function() {
+			toaster.style.display = "none";
+		}, 1000 * time);
+	}
+}
+
 function copyImage() {
 	// TODO Calculate Bounding Box to make the Bitmap fit the content! See https://stackoverflow.com/a/62156967
 	var c=document.getElementsByTagName("canvas")[0];
@@ -50,7 +65,7 @@ function copyImage() {
 			try {
 				var item = new ClipboardItem({ "image/png": blob });
 				navigator.clipboard.write([item]);
-				alert('CLD copied to clipboard.');
+				throwToast('CLD copied to clipboard.');
 			} catch (x) {
 				alert('Can\'t copy in this browser. Try another one (Chrome might work).');
 			}

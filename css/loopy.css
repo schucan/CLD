@@ -34,7 +34,24 @@ canvas{
 #canvasses[cursor=label]{
 	cursor: url('cursors/label.png') 15 15, auto;
 }
-
+#toaster {
+	position: fixed;
+	bottom: 0;
+	z-index: 10000;
+	left: 0;
+	right: 0;
+	text-align: center;
+	display: none;
+}
+#toaster p {
+	background-color: #44ffb1;
+	color:#555;
+	margin: 0 auto;
+	padding: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	display: inline-block;
+}
 
 
 /**********
@@ -100,7 +117,7 @@ div[big=yes] .play_button_label{
 
 
 /**********
- TOOLBAR 
+ TOOLBAR
 **********/
 
 #toolbar{
@@ -134,7 +151,7 @@ div[big=yes] .play_button_label{
 }
 
 /**********
- SIDEBAR 
+ SIDEBAR
 **********/
 
 #sidebar{
@@ -193,11 +210,11 @@ div[big=yes] .play_button_label{
 }
 .component_input{
 	border: none;
-	
+
 	width:calc(100% - 10px);
 	height:22px;
 	padding: 5px;
-	
+
 	font-size: 20px;
 	font-weight: 100;
 }
